@@ -13,6 +13,9 @@
             <Setter Property="Width" Value="150"/>
             <Setter Property="IsEnabled" Value="False"/>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -24,15 +27,15 @@
         </Grid.RowDefinitions>
 
         <StackPanel Margin="10">
-            <TextBlock Text="Programmname:"/>
+            <Label Content="Programmname:"/>
             <TextBox x:Name="newProgramName"/>
-            <TextBlock Text="Programmpfad:"/>
+            <Label Content="Programmpfad:"/>
             <TextBox x:Name="newProgramPath"/>
             <Button IsEnabled="True" x:Name="addButton" Click="addButton_Click" Content="Hinzufügen"/>
         </StackPanel>
 
         
-        <TextBlock VerticalAlignment="Top" Text="Programme:" Grid.Row="1" Margin="10, 0, 0, 0"/>
+        <Label VerticalAlignment="Top" Content="Programme:" Grid.Row="1" Margin="10, 0, 10, 0"/>
         <ListBox Margin="10, 20, 10, 10" Grid.Row="1" SelectionChanged="programs_SelectionChanged" x:Name="programs" Visibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate>

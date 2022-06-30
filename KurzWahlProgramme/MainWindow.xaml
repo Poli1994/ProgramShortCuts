@@ -1,0 +1,55 @@
+﻿<Window x:Class="KurzWahlProgramme.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KurzWahlProgramme"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10">
+            <TextBlock Text="Programmname:"/>
+            <TextBox x:Name="newProgramName"/>
+            <TextBlock Text="Programmpfad:"/>
+            <TextBox x:Name="newProgramPath"/>
+            <Button IsEnabled="True" x:Name="addButton" Click="addButton_Click" Content="Hinzufügen"/>
+        </StackPanel>
+
+        <TextBlock Text="Programme:" Grid.Row="1" Margin="10, 0, 0, 0"/>
+        <StackPanel Grid.Row="1" Margin="10, 20, 10, 10" >
+            <ListBox SelectionChanged="programs_SelectionChanged" x:Name="programs" Visibility="Hidden">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FileName}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <DockPanel Grid.Row="2">
+            <Button Foreground="White" Click="deleteButton_Click" x:Name="deleteButton" Background="DarkRed" Content="Löschen"/>
+            <Button Click="startButton_Click" x:Name="startButton" HorizontalAlignment="Right" Content="Starten"/>
+        </DockPanel>
+
+        <DockPanel Grid.Row="3">
+            <Button IsEnabled="True" Click="Save_Click" x:Name="Save" Content="Speichern"/>
+            <Button HorizontalAlignment="Right" Click="showPathButton_Click" x:Name="showPathButton" Content="Pfad anzeigen"/>
+        </DockPanel>
+    </Grid>
+</Window>
